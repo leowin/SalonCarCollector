@@ -16,7 +16,17 @@
     "url": "https://github.com/atkjumedia/DCBootstrap/issues"
   },
   "homepage": "https://github.com/atkjumedia/DCBootstrap",
-  "cordovaPlugins": [],
+  "cordovaPlugins": [
+    {
+      "locator": "https://github.com/petermetz/cordova-plugin-ibeacon.git",
+      "id": "com.unarin.cordova.beacon"
+    },
+    {
+      "locator": "https://github.com/atkjumedia/dcsync.git",
+      "id": "cordova-plugin-dcsync"
+    },
+    "de.appplant.cordova.plugin.local-notification"
+  ],
   "cordovaPlatforms": [
     "android"
   ]
