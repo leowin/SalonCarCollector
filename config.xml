@@ -74,8 +74,8 @@
   
   <plugin name="cordova-plugin-dcsync" spec="0.1.1" source="pgb" />
   <plugin name="cordova-plugin-ibeacon" source="npm" />
-  <plugin name="com.ionic.keyboard" spec="1.0.3" />
-  <plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" spec="0.8.2" />
-  <plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" />
-  <plugin name="de.appplant.cordova.plugin.local-notification" spec="0.8.1" />
+  <plugin name="com.ionic.keyboard" spec="1.0.3" source="pgb" />
+  <plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" spec="0.8.2"  source="pgb" />
+  <plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4"  source="pgb" />
+  <plugin name="de.appplant.cordova.plugin.local-notification" spec="0.8.1" source="pgb"  />
   </widget>
