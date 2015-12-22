@@ -41,6 +41,7 @@ var app = {
 	},
 	synccompleted: function(pro) {
 		document.getElementById('syncprogress').innerHTML= "Sync complete";
+		app.checkStartPage();
 	},
 	syncfail: function(pro) {
 		document.getElementById('syncprogress').innerHTML= "Sync failed" + JSON.stringify(pro);
