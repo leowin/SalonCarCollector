@@ -72,7 +72,7 @@
   <preference name="AutoHideSplashScreen" value="false" />
   <preference name="SplashScreenDelay" value="300000" />
   
-  <plugin name="cordova-plugin-dcsync"   spec="0.1.2" source="pgb" />
+  <plugin name="cordova-plugin-dcsync"  source="pgb" />
   <plugin name="cordova-plugin-ibeacon" source="npm" />
   <plugin name="com.ionic.keyboard" spec="1.0.3" source="pgb" />
   <plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" spec="0.8.2"  source="pgb" />
