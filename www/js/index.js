@@ -85,6 +85,7 @@ var app = {
 					cordova.plugins.DCSync.getContentRootUri().then( function(uri) {
 						ele.innerHTML = uri.replace("cdvfile://localhost/", "file:///") + data[0].files[0];
 						document.getElementById('gobutton').style="";
+						app.navigate();
 					}).fail(app.failure);
 				}
 				else {
