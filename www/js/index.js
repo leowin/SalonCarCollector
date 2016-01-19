@@ -104,7 +104,7 @@ var app = {
 					return	cordova.plugins.DCSync.getContentRootUri().then( function(uri) {
 						console.log('content root: ' + JSON.stringify(uri));
 						if (window.resolveLocalFileSystemURL) {
-							window.resolveLocalFileSystemURL(fr, function (entry) {
+							window.resolveLocalFileSystemURL(uri, function (entry) {
 								var url = entry.toURL() + data[0].files[0] + "?assets=" + encodeURI(cordova.file.applicationDirectory);
 								console.log('start page url root: ' + JSON.stringify(url));
 								//todo handle errors
