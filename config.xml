@@ -15,6 +15,8 @@
   <plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" spec="0.8.2" source="pgb"/>
   <plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" source="pgb"/>
   <plugin name="cordova-plugin-x-toast" source="npm" />
+  <plugin name="cordova-plugin-inappbrowser" source="npm" />
+  
   
   <access origin="*"/>
   <allow-intent href="http://*/*"/>

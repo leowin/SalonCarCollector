@@ -26,7 +26,8 @@
       "id": "cordova-plugin-dcsync"
     },
     "de.appplant.cordova.plugin.local-notification",
-    "cordova-plugin-splashscreen"
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
     "android"
