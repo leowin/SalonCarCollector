@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="at.kju.dcbootstrap" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="at.kju.dcbootstrap" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>Salon Car Collector</name>
   <description>
         CO2-Tieferlegen App including Salon Car Collector
@@ -16,8 +16,8 @@
   <plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" source="pgb"/>
   <plugin name="cordova-plugin-x-toast" source="npm" />
   <plugin name="cordova-plugin-inappbrowser" source="npm" />
-  <plugin name="org.apache.cordova.splashscreen" spec="0.1.0" source="pgb" />
-  
+  <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.3" />
+
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
@@ -77,6 +77,7 @@
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
   <icon src="resources/ios/icon/icon-small@3x.png"/>
+  <preference name="auto-hide-splash-screen" value="false" />
   <preference name="splashscreen" value="splash" />
   <preference name="splashScreenDelay" value="30000" />
   <preference name="autoHideSplashScreen" value="false"/>
