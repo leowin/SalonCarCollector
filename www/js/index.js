@@ -17,11 +17,6 @@ var app = {
 	lang: "",
 	
     initialize: function() {
-	try {
-		navigator.splashscreen.show();
-	}
-	catch( e) {
-	}
 	this.lang = navigator.language;
 		if (this.lang == "de" || this.lang == "it" || this.lang == "fr")
 			this.lang = this.lang + "-CH";			
@@ -38,6 +33,8 @@ var app = {
 	},
     
     onDeviceReady: function() {
+		try {navigator.splashscreen.show();} catch( e) {	}	
+		
 		cordova.plugins.DCSync.on('sync_completed', app.synccompleted);
 		cordova.plugins.DCSync.on('sync_failed', app.syncfail);
 		cordova.plugins.DCSync.on('sync_progress', app.syncprogress);
@@ -98,7 +95,7 @@ var app = {
 	},
 	
 	checkStartPage: function() {
-		return  cordova.plugins.DCSync.searchDocuments( {}, {path:"co2tl_app/index.html"}).then( function(data) {
+		return  cordova.plugins.DCSync.searchDocuments( {}, {path:"co2tl_app/index.html", maxResults:1, exactMatch:true}).then( function(data) {
 				console.log('start page: ' + JSON.stringify(data));
 				if( data && data.length>0 && data[0].files && data[0].files.length>0 ) {
 					return	cordova.plugins.DCSync.getContentRootUri().then( function(uri) {
