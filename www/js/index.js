@@ -61,9 +61,9 @@ var app = {
 	},
 	startSync: function() {
 		console.log('startSync:');
-		app.toast("sync");
+		//app.toast("sync");
 		cordova.plugins.DCSync.performSync().then(function() {
-			console.log('sync start requested:');
+		console.log('sync start requested:');
 		}, app.configerr)
 	},
 	configerr: function() {

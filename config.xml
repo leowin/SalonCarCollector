@@ -16,7 +16,7 @@
   <plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" source="pgb"/>
   <plugin name="cordova-plugin-x-toast" source="npm" />
   <plugin name="cordova-plugin-inappbrowser" source="npm" />
-  
+  <plugin name="org.apache.cordova.splashscreen" spec="0.1.0" source="pgb" />
   
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
