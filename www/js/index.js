@@ -47,7 +47,7 @@ var app = {
 		}, app.initSync);
     },
 	initSync: function() {
-		cordova.plugins.DCSync.setSyncOptions({url:'https://ch-co2tieferlegen.preview.kju.at/DC', username:'anonymous', password:'YTI2Y2UxYzgxZTBiN2U4OWZmZjU1OWJmYmU4ZTEwN2E2MzFhNGFlMmFkYzlhMWMxYmE1YWYyOGNiYWMyZWI4ZA==', interval: 1440})
+		cordova.plugins.DCSync.setSyncOptions({url:'https://ch-co2tieferlegen.preview.kju.at/DC', username:'anonymous', password:'8FN23!3BNCLFA4$GNHIAKDFFNA2abx0938//', interval: 1440})
 			.then(function() {
 				console.log('syncOptionsSet:');
 				app.startSync();
@@ -74,7 +74,7 @@ var app = {
 		window.plugins.toast.show(app.getString(identifier), length ? length : "long", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
 	},
 	syncprogress: function(pro) {
-		
+		console.log("sync: " + pro.percent + "%");
 	},
 	synccompleted: function(pro) {
 		console.log('sync completed:');
@@ -84,7 +84,7 @@ var app = {
 		console.log('sync failed: ' + JSON.stringify(a));
 		app.toast("fail");
 		//retry after timeout
-		window.timeout(10000, app.startSync );
+		window.setTimeout(app.startSync, 10000 );
 	},
 	getString(identifier) {
 		var t =texts[identifier]
