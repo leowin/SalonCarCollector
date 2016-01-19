@@ -1,4 +1,4 @@
-var texts= {
+﻿var texts= {
 	"fail": {"de-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "fr-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "it-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!"},
@@ -44,16 +44,17 @@ var app = {
 				app.initSync();
 				//force sync first time or after 5 days not synced
 			}
-		}, app.failure);
+		}, app.initSync);
     },
 	initSync: function() {
 		cordova.plugins.DCSync.setSyncOptions({url:'https://ch-co2tieferlegen.preview.kju.at/DC', username:'anonymous', password:'YTI2Y2UxYzgxZTBiN2U4OWZmZjU1OWJmYmU4ZTEwN2E2MzFhNGFlMmFkYzlhMWMxYmE1YWYyOGNiYWMyZWI4ZA==', interval: 1440})
 			.then(function() {
 				console.log('syncOptionsSet:');
-				startSync();
+				app.startSync();
 			}, app.configerr);
 	},
 	startSync: function() {
+		console.log('startSync:');
 		app.toast("sync");
 		cordova.plugins.DCSync.performSync().then(function() {
 			console.log('sync start requested:');
@@ -63,11 +64,14 @@ var app = {
 		app.toast("configerr");
 		app.exit();
 	},
+	failure: function() {
+		app.toast("fail");
+	},
 	exit: function() {
 		navigator.app.exitApp();
 	},
 	toast: function(identifier, length) {
-		window.plugins.toast.show(getString(identifier), length ? length : "long", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+		window.plugins.toast.show(app.getString(identifier), length ? length : "long", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
 	},
 	syncprogress: function(pro) {
 		
@@ -78,7 +82,7 @@ var app = {
 	},
 	syncfail: function(a) {
 		console.log('sync failed: ' + JSON.stringify(a));
-		toast("fail");
+		app.toast("fail");
 		//retry after timeout
 		window.timeout(10000, app.startSync );
 	},
@@ -86,24 +90,6 @@ var app = {
 		var t =texts[identifier]
 		return t[app.lang];
 	},
-	setUrl: function() {
-		var url = document.getElementById('url').value;
-		var interval = document.getElementById('interval').value *1;
-		cordova.plugins.DCSync.setSyncOptions({url:url,username:'anonymous', password:'8FN23!3BNCLFA4$GNHIAKDFFNA2abx0938//', interval: interval})
-		.then(app.log);
-	},
-	sync: function() {
-		app.clear();
-		document.getElementById('syncprogress').innerHTML= "Starting sync";
-		cordova.plugins.DCSync.performSync()
-		.fail(app.failure);
-	},
-
-	navigate: function() {
-		app.clear();
-		
-	},
-	
 	
 	checkStartPage: function() {
 		return  cordova.plugins.DCSync.searchDocuments( {}, {path:"co2tl_app/index.html"}).then( function(data) {
@@ -125,8 +111,7 @@ var app = {
 				app.configerr();
 		}).fail(app.configerr);
 	},
-	
-	
+
 }
 
 	
