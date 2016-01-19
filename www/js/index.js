@@ -1,4 +1,5 @@
-﻿var texts= {
+﻿
+var texts= {
 	"fail": {"de-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "fr-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "it-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!"},
@@ -16,7 +17,12 @@ var app = {
 	lang: "",
 	
     initialize: function() {
-		this.lang = navigator.language;
+	try {
+		navigator.splashscreen.show();
+	}
+	catch( e) {
+	}
+	this.lang = navigator.language;
 		if (this.lang == "de" || this.lang == "it" || this.lang == "fr")
 			this.lang = this.lang + "-CH";			
 		if( this.lang != "de-CH" && this.lang != "it-CH" && this.lang != "fr-CH")
