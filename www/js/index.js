@@ -1,4 +1,4 @@
-﻿
+
 var texts= {
 	"fail": {"de-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "fr-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
@@ -9,17 +9,18 @@ var texts= {
 	"configerr": {"de-CH": "configerr",
 			 "fr-CH": "configerr",
 			 "it-CH": "configerr"},
-			
+
 }
 
 var app = {
     // Application Constructor
 	lang: "",
-	
+	percent: -1,
+
     initialize: function() {
 	this.lang = navigator.language;
 		if (this.lang == "de" || this.lang == "it" || this.lang == "fr")
-			this.lang = this.lang + "-CH";			
+			this.lang = this.lang + "-CH";
 		if( this.lang != "de-CH" && this.lang != "it-CH" && this.lang != "fr-CH")
 			this.lang = "fr-CH";
         this.bindEvents();
@@ -31,10 +32,10 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 	},
-    
+
     onDeviceReady: function() {
-		try {navigator.splashscreen.show();} catch( e) {	}	
-		
+		try {navigator.splashscreen.show();} catch( e) {	}
+
 		cordova.plugins.DCSync.on('sync_completed', app.synccompleted);
 		cordova.plugins.DCSync.on('sync_failed', app.syncfail);
 		cordova.plugins.DCSync.on('sync_progress', app.syncprogress);
@@ -58,7 +59,9 @@ var app = {
 	},
 	startSync: function() {
 		console.log('startSync:');
-		//app.toast("sync");
+		app.percent=0;
+		app.toast("sync");
+		window.setTimeout(3000, app.scheduledToasts);
 		cordova.plugins.DCSync.performSync().then(function() {
 		console.log('sync start requested:');
 		}, app.configerr)
@@ -70,6 +73,13 @@ var app = {
 	failure: function() {
 		app.toast("fail");
 	},
+	scheduledToasts: function() {
+		if( app.percent != -1 ) {
+			window.plugins.toast.show(app.getString("sync") + ": " + app.percent + ", length ? length : "short", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
+			window.setTimeout(3000, app.scheduledToasts);
+		}
+	},
+
 	exit: function() {
 		navigator.app.exitApp();
 	},
@@ -78,6 +88,9 @@ var app = {
 	},
 	syncprogress: function(pro) {
 		console.log("sync: " + pro.percent + "%");
+		if( pro && pro.percent && pro.percent <= 100 ) {
+			app.percent = pro.percent;
+		}
 	},
 	synccompleted: function(pro) {
 		console.log('sync completed:');
@@ -93,7 +106,7 @@ var app = {
 		var t =texts[identifier]
 		return t[app.lang];
 	},
-	
+
 	checkStartPage: function() {
 		return  cordova.plugins.DCSync.searchDocuments( {}, {path:"co2tl_app/index.html", maxResults:1, exactMatch:true}).then( function(data) {
 				console.log('start page: ' + JSON.stringify(data));
@@ -117,7 +130,7 @@ var app = {
 
 }
 
-	
+
 
 app.initialize();
 
