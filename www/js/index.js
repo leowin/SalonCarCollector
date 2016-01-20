@@ -3,9 +3,9 @@ var texts= {
 	"fail": {"de-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "fr-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "it-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!"},
-	"sync": {"de-CH": "Lade Inhalte...",
-			 "fr-CH": "Lade Inhalte...",
-			 "it-CH": "Lade Inhalte..."},
+	"sync": {"de-CH": "Lade Inhalte",
+			 "fr-CH": "Lade Inhalte",
+			 "it-CH": "Lade Inhalte"},
 	"configerr": {"de-CH": "configerr",
 			 "fr-CH": "configerr",
 			 "it-CH": "configerr"},
@@ -41,7 +41,7 @@ var app = {
 		cordova.plugins.DCSync.on('sync_progress', app.syncprogress);
 		cordova.plugins.DCSync.getLastSync().then(function(date) {
 			console.log('lastSync:' + JSON.stringify(date));
-			if( date && date.syncDate && date.syncDate > new Date().getTime() - 1000*60*60*24*5) {
+			if( date && date.syncDate && date.syncDate > ((new Date().getTime())/1000 - 60*60*24*5 )) {
 				app.checkStartPage();
 			}
 			else {
