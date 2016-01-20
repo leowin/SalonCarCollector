@@ -16,7 +16,7 @@
   <plugin name="de.appplant.cordova.plugin.background-mode" spec="0.6.4" source="pgb"/>
   <plugin name="cordova-plugin-x-toast" source="npm" />
   <plugin name="cordova-plugin-inappbrowser" source="npm" />
-  <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.3" />
+  <gap:plugin name="org.apache.cordova.splashscreen" />
 
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
@@ -78,7 +78,7 @@
   </platform>
   <icon src="resources/ios/icon/icon-small@3x.png"/>
   <preference name="auto-hide-splash-screen" value="false" />
-  <preference name="splashscreen" value="splash" />
-  <preference name="splashScreenDelay" value="30000" />
+  <preference name="SplashScreen" value="splash" />
+  <preference name="SplashScreenDelay" value="30000" />
   <preference name="autoHideSplashScreen" value="false"/>
 </widget>
