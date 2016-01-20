@@ -75,7 +75,7 @@ var app = {
 	},
 	scheduledToasts: function() {
 		if( app.percent != -1 ) {
-			window.plugins.toast.show(app.getString("sync") + ": " + app.percent + ", length ? length : "short", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
+			window.plugins.toast.show(app.getString("sync") + ": " + app.percent + " %...", "short", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
 			window.setTimeout(3000, app.scheduledToasts);
 		}
 	},
