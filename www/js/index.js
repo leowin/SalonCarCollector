@@ -118,8 +118,12 @@ var app = {
 							window.resolveLocalFileSystemURL(uri, function (entry) {
 								var url = entry.toURL() + data[0].files[0] + "?assets=" + encodeURIComponent(cordova.file.applicationDirectory);
 								console.log('start page url root: ' + JSON.stringify(url));
-								//todo handle errors
+								try {
 								window.location=url;
+								}catch(exep){
+									console.log("Cannot navigate: " + exep);
+									//todo: what to do
+								}
 							});
 						}
 					}).fail(app.configerr);
