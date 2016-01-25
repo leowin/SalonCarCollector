@@ -17,10 +17,11 @@ var app = {
 	percent: -1,
 
     initialize: function() {
-	this.lang = navigator.language;
+		this.lang = navigator.language.slice(0,2);
+	
 		if (this.lang == "de" || this.lang == "it" || this.lang == "fr")
 			this.lang = this.lang + "-CH";
-		if( this.lang != "de-CH" && this.lang != "it-CH" && this.lang != "fr-CH")
+		else 
 			this.lang = "fr-CH";
         this.bindEvents();
     },
@@ -68,7 +69,7 @@ var app = {
 	configerr: function() {
 		app.percent = -1;
 		app.toast("configerr");
-		//app.exit();
+		window.setTimeout(app.exit, 3000);
 	},
 	failure: function() {
 		app.toast("fail");
@@ -129,7 +130,6 @@ var app = {
 	},
 
 }
-
 
 
 app.initialize();
