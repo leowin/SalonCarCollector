@@ -66,8 +66,9 @@ var app = {
 		}, app.configerr)
 	},
 	configerr: function() {
+		app.percent = -1;
 		app.toast("configerr");
-		app.exit();
+		//app.exit();
 	},
 	failure: function() {
 		app.toast("fail");
