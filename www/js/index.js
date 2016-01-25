@@ -114,7 +114,7 @@ var app = {
 						console.log('content root: ' + JSON.stringify(uri));
 						if (window.resolveLocalFileSystemURL) {
 							window.resolveLocalFileSystemURL(uri, function (entry) {
-								var url = entry.toURL() + data[0].files[0] + "?assets=" + encodeURI(cordova.file.applicationDirectory);
+								var url = entry.toURL() + data[0].files[0] + "?assets=" + encodeURIComponent(cordova.file.applicationDirectory);
 								console.log('start page url root: ' + JSON.stringify(url));
 								//todo handle errors
 								window.location=url;
