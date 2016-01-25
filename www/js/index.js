@@ -34,7 +34,7 @@ var app = {
 
     onDeviceReady: function() {
 		try {navigator.splashscreen.show();} catch( e) {	}
-		window.setTimeout( function () {
+		//window.setTimeout( function () {
 		cordova.plugins.DCSync.on('sync_completed', app.synccompleted);
 		cordova.plugins.DCSync.on('sync_failed', app.syncfail);
 		cordova.plugins.DCSync.on('sync_progress', app.syncprogress);
@@ -48,7 +48,7 @@ var app = {
 				//force sync first time or after 5 days not synced
 			}
 		}, app.initSync);
-		}, 15000);
+		//}, 15000);
     },
 	initSync: function() {
 		cordova.plugins.DCSync.setSyncOptions({url:'https://ch-co2tieferlegen.preview.kju.at/DC', username:'anonymous', password:'8FN23!3BNCLFA4$GNHIAKDFFNA2abx0938//', interval: 1440})
