@@ -1,4 +1,4 @@
-
+﻿
 var texts= {
 	"fail": {"de-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
 			 "fr-CH": "Erreur lors du chargement du contenu. Merci de vérifier votre connexion Internet!",
@@ -9,7 +9,6 @@ var texts= {
 	"configerr": {"de-CH": "Kann Daten nicht laden. Bitte installieren Sie die App erneut!",
 			 "fr-CH": "Impossible de charger les données. Merci d’installer à nouveau l’appli!",
 			 "it-CH": "Impossibile caricare i dati. Reinstallare l’app!"},
-
 }
 
 var app = {
