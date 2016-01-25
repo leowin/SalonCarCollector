@@ -1,14 +1,14 @@
 
 var texts= {
 	"fail": {"de-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
-			 "fr-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!",
-			 "it-CH": "Fehler beim herunterladen der Inhalte. Bitte überprüfen Sie die Internetverbindung!"},
+			 "fr-CH": "Erreur lors du chargement du contenu. Merci de vérifier votre connexion Internet!",
+			 "it-CH": "Errore durante il download dei contenuti. Controllare la connessione Internet!"},
 	"sync": {"de-CH": "Lade Inhalte",
-			 "fr-CH": "Lade Inhalte",
-			 "it-CH": "Lade Inhalte"},
-	"configerr": {"de-CH": "configerr",
-			 "fr-CH": "configerr",
-			 "it-CH": "configerr"},
+			 "fr-CH": "Charger le contenu",
+			 "it-CH": "Carica contenuti"},
+	"configerr": {"de-CH": "Kann Daten nicht laden. Bitte installieren Sie die App erneut!",
+			 "fr-CH": "Impossible de charger les données. Merci d’installer à nouveau l’appli!",
+			 "it-CH": "Impossibile caricare i dati. Reinstallare l’app!"},
 
 }
 
