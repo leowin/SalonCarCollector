@@ -15,6 +15,7 @@ var app = {
     // Application Constructor
 	lang: "",
 	percent: -1,
+	firstTime: true,
 
     initialize: function() {
 		this.lang = navigator.language.slice(0,2);
@@ -41,12 +42,18 @@ var app = {
 		cordova.plugins.DCSync.on('sync_progress', app.syncprogress);
 		cordova.plugins.DCSync.getLastSync().then(function(date) {
 			console.log('lastSync:' + JSON.stringify(date));
-			if( date && date.syncDate && date.syncDate > ((new Date().getTime())/1000 - 60*60*24*5 )) {
-				app.checkStartPage();
+			if( date && date.syncDate && date.syncDate > 0) {
+				app.firstTime = false;
+				if( date.syncDate < ((new Date().getTime())/1000 - 60*60*24*5 )) {
+					//force sync after 5 days not synced
+					app.initSync();
+				}
+				else {
+					app.checkStartPage();
+				}
 			}
 			else {
 				app.initSync();
-				//force sync first time or after 5 days not synced
 			}
 		}, app.initSync);
 		//}, 15000);
@@ -102,7 +109,12 @@ var app = {
 		console.log('sync failed: ' + JSON.stringify(a));
 		app.toast("fail");
 		//retry after timeout
-		window.setTimeout(app.startSync, 10000 );
+		if( app.firstTime ) {
+			window.setTimeout(app.startSync, 10000 );
+		}
+		else {
+			app.checkStartPage();
+		}
 	},
 	getString(identifier) {
 		var t =texts[identifier]
