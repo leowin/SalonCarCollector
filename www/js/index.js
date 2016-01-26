@@ -83,8 +83,13 @@ var app = {
 		app.toast("fail");
 	},
 	scheduledToasts: function() {
-		if( app.percent > 0 ) {
-			window.plugins.toast.show(app.getString("sync") + ": " + app.percent + " %...", "short", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
+		if( app.percent != -1 ) {
+			var text = app.getString("sync");
+			if( app.percent > 0) {
+				text = text + ": " + app.percent;
+			}
+			text = text + + " %...";
+			window.plugins.toast.show(text, "short", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
 			window.setTimeout( app.scheduledToasts, 1500);
 		}
 	},
