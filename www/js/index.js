@@ -88,7 +88,7 @@ var app = {
 			if( app.percent > 0) {
 				text = text + ": " + app.percent;
 			}
-			text = text + + " %...";
+			text = text + " %...";
 			window.plugins.toast.show(text, "short", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
 			window.setTimeout( app.scheduledToasts, 1500);
 		}
