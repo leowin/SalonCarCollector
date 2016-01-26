@@ -59,7 +59,7 @@ var app = {
 		//}, 15000);
     },
 	initSync: function() {
-		cordova.plugins.DCSync.setSyncOptions({url:'https://ch-co2tieferlegen.preview.kju.at/DC', username:'anonymous', password:'8FN23!3BNCLFA4$GNHIAKDFFNA2abx0938//', interval: 1440})
+		cordova.plugins.DCSync.setSyncOptions({url:'https://co2tieferlegen.ch/dc', username:'anonymous', password:'8FN23!3BNCLFA4$GNHIAKDFFNA2abx0938//', interval: 1440})
 			.then(function() {
 				console.log('syncOptionsSet:');
 				app.startSync();
@@ -102,8 +102,8 @@ var app = {
 	},
 	syncprogress: function(pro) {
 		console.log("sync: " + pro.percent + "%");
-		if( pro && pro.percent && pro.percent <= 100 ) {
-			app.percent = pro.percent;
+		if( pro && pro.percent && (pro.percent*1) <= 100 ) {
+			app.percent = pro.percent*1;
 		}
 	},
 	synccompleted: function(pro) {
