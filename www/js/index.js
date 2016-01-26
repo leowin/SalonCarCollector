@@ -72,7 +72,7 @@ var app = {
 		window.setTimeout(app.scheduledToasts, 1500);
 		cordova.plugins.DCSync.performSync().then(function() {
 		console.log('sync start requested:');
-		}, app.configerr)
+		}, function(a) {app.syncfail(a)});
 	},
 	configerr: function() {
 		app.percent = -1;
@@ -83,7 +83,7 @@ var app = {
 		app.toast("fail");
 	},
 	scheduledToasts: function() {
-		if( app.percent != -1 ) {
+		if( app.percent > 0 ) {
 			window.plugins.toast.show(app.getString("sync") + ": " + app.percent + " %...", "short", 'bottom', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
 			window.setTimeout( app.scheduledToasts, 1500);
 		}
