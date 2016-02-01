@@ -18,6 +18,8 @@
   <plugin name="cordova-plugin-inappbrowser" spec="1.2.0" />
   <plugin name="org.apache.cordova.splashscreen" source="pgb" spec="1.0.0" />
 
+  <preference name="permissions" value="none"/>
+	
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
